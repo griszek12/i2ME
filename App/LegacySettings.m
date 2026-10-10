@@ -3,7 +3,7 @@
 static void Error(NSError *error){if(error)[[[UIAlertView alloc] initWithTitle:L(@"error") message:error.localizedDescription delegate:nil cancelButtonTitle:L(@"ok") otherButtonTitles:nil] show];}
 @implementation SettingsController
 - (void)viewDidLoad{[super viewDidLoad];self.title=L(@"settings");}
-- (NSString *)tableView:(UITableView *)table titleForFooterInSection:(NSInteger)section{return @"i2ME\nMade by Griszek (with help of ChatGPT 6.1)\nVERSION: 1.0.1";}
+- (NSString *)tableView:(UITableView *)table titleForFooterInSection:(NSInteger)section{return @"i2ME\nMade by Griszek (with help of ChatGPT 6.1)\nVERSION: 1.0.2";}
 - (NSInteger)tableView:(UITableView *)table numberOfRowsInSection:(NSInteger)section{return SupportedLanguages().count;}
 - (NSString *)tableView:(UITableView *)table titleForHeaderInSection:(NSInteger)section{return L(@"language");}
 - (UITableViewCell *)tableView:(UITableView *)table cellForRowAtIndexPath:(NSIndexPath *)index{

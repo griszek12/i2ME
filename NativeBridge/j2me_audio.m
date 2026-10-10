@@ -357,25 +357,31 @@ static s32 n_audioPlayTone(Runtime *runtime, JClass *clazz) {
 // Native method table
 // ============================================================
 
+// i2ME 1.0.2: silent players keep the Java media lifecycle working without audio devices.
+static s32 silentCreate(Runtime *runtime,JClass *clazz) {runtime->jnienv->push_long(runtime->stack,1);return RUNTIME_STATUS_NORMAL;}
+static s32 silentNoop(Runtime *runtime,JClass *clazz) {return RUNTIME_STATUS_NORMAL;}
+static s32 silentDuration(Runtime *runtime,JClass *clazz) {runtime->jnienv->push_long(runtime->stack,-1);return RUNTIME_STATUS_NORMAL;}
+static s32 silentTime(Runtime *runtime,JClass *clazz) {runtime->jnienv->push_long(runtime->stack,0);return RUNTIME_STATUS_NORMAL;}
+
 #define CLS "javax/microedition/lcdui/NativeBridge"
 
 static java_native_method j2me_audio_methods[] = {
     // WAV/MP3
-    {CLS, "audioCreatePlayer",     "([B)J",   n_audioCreatePlayer},
-    {CLS, "audioStart",            "(J)V",    n_audioStart},
-    {CLS, "audioStop",             "(J)V",    n_audioStop},
-    {CLS, "audioClose",            "(J)V",    n_audioClose},
-    {CLS, "audioSetLoop",          "(JI)V",   n_audioSetLoop},
-    {CLS, "audioSetVolume",        "(JF)V",   n_audioSetVolume},
-    {CLS, "audioGetDuration",      "(J)J",    n_audioGetDuration},
-    {CLS, "audioGetTime",          "(J)J",    n_audioGetTime},
+    {CLS, "audioCreatePlayer",     "([B)J",   silentCreate},
+    {CLS, "audioStart",            "(J)V",    silentNoop},
+    {CLS, "audioStop",             "(J)V",    silentNoop},
+    {CLS, "audioClose",            "(J)V",    silentNoop},
+    {CLS, "audioSetLoop",          "(JI)V",   silentNoop},
+    {CLS, "audioSetVolume",        "(JF)V",   silentNoop},
+    {CLS, "audioGetDuration",      "(J)J",    silentDuration},
+    {CLS, "audioGetTime",          "(J)J",    silentTime},
     // MIDI
-    {CLS, "audioCreateMidiPlayer", "([B)J",   n_audioCreateMidiPlayer},
-    {CLS, "audioMidiStart",        "(J)V",    n_audioMidiStart},
-    {CLS, "audioMidiStop",         "(J)V",    n_audioMidiStop},
-    {CLS, "audioMidiClose",        "(J)V",    n_audioMidiClose},
+    {CLS, "audioCreateMidiPlayer", "([B)J",   silentCreate},
+    {CLS, "audioMidiStart",        "(J)V",    silentNoop},
+    {CLS, "audioMidiStop",         "(J)V",    silentNoop},
+    {CLS, "audioMidiClose",        "(J)V",    silentNoop},
     // Tone
-    {CLS, "audioPlayTone",         "(III)V",  n_audioPlayTone},
+    {CLS, "audioPlayTone",         "(III)V",  silentNoop},
 };
 
 #undef CLS

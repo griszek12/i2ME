@@ -1,4 +1,4 @@
-# i2ME
+# i2ME 1.0.2
 
 A Java ME game emulator for older iOS devices. Made by Griszek (with help of ChatGPT 6.1).
 
@@ -58,3 +58,7 @@ The app icon was generated using a Java-inspired coffee motif and the i2ME name.
 ## Changes in 1.0.1
 
 Simplified the native Canvas UI transition; the owner confirmed this build resolves the gray screen on iPhone 4 with iOS 7.1.2. Added startup/render diagnostics in `Documents/i2me.log`; the log is overwritten when the app starts.
+
+## Changes in 1.0.2
+
+Audio playback is disabled globally to avoid severe slowdown on iPhone 4. Java media calls use silent placeholder players; enabling sound in a game produces no output and creates no audio device or synthesizer. Full game compatibility still requires testing.
