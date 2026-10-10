@@ -8,7 +8,7 @@ Based on [JarBox](https://github.com/ccbkv/J2MEEmulator-iOS) and powered by mini
 
 - **ARMv7**, minimum **iOS 5.0**, built with the iOS 6.1 SDK. Primary target: iPhone 4 running iOS 6.
 - The release IPA is **unsigned**. Installation requires your own signing certificate and provisioning profile, or a jailbroken device configured to install unsigned apps. Jailbreak alone may not be enough.
-- Not yet tested on a physical iPhone. ARMv6 and iOS 3 are not supported.
+- The updated build was confirmed working by the project owner on an iPhone 4 running iOS 7.1.2. ARMv6 and iOS 3 are not supported.
 - Testing was performed in the iOS 6.1 simulator. No commercial games or user data are included.
 
 ## Using i2ME
@@ -45,7 +45,8 @@ The build uses the included runtime JAR files. Java ME API sources are in `JavaA
 - ARMv7 and i386 builds completed successfully. The device executable declares a minimum iOS version of 5.0 and SDK version 6.1.
 - Demo testing covered 2D rendering, keypad input and RMS in the simulator.
 - A private Plants vs Zombies test passed startup after working around an AudioToolbox crash. A full playthrough has not been verified.
-- MIDI is muted in the simulator because the legacy AudioToolbox crashed when the VM had no audio device. The device build retains MIDI playback, but audio has not yet been tested on a phone.
+- On iPhone 4, enabling sound in Plants vs Zombies causes severe slowdown; keep sound disabled for now.
+- MIDI is muted in the simulator because the legacy AudioToolbox crashed when the VM had no audio device. The device build retains MIDI playback, but device audio performance needs further work.
 - Full JVM save states are not available. 3D compatibility and complete MIDP form support need further testing.
 
 ## Credits and licenses
@@ -53,3 +54,7 @@ The build uses the included runtime JAR files. Java ME API sources are in `JavaA
 See [THIRD_PARTY.md](THIRD_PARTY.md), [LICENSE](LICENSE) and the `Licenses` directory. Original author notices are preserved in the sources. Public releases should include the matching source package, including the modified M3G sources.
 
 The app icon was generated using a Java-inspired coffee motif and the i2ME name. It is not an official Java asset. This project is not affiliated with Oracle or Apple.
+
+## Changes in 1.0.1
+
+Simplified the native Canvas UI transition; the owner confirmed this build resolves the gray screen on iPhone 4 with iOS 7.1.2. Added startup/render diagnostics in `Documents/i2me.log`; the log is overwritten when the app starts.

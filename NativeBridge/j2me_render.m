@@ -251,14 +251,18 @@ static inline void setColorFromARGB(CGContextRef ctx, int argb) {
 // ============================================================
 
 static RenderContext *createRenderContext(int width, int height) {
+    fprintf(stderr,"[i2ME render] Allocating context %dx%d\n",width,height);
     RenderContext *rc = (RenderContext *)calloc(1, sizeof(RenderContext));
     atomic_init(&rc->refcount, 1);
     rc->width = width;
     rc->height = height;
 
     CGColorSpaceRef cs = getColorSpace();
+    fprintf(stderr,"[i2ME render] Color space ready\n");
     rc->ctx = CGBitmapContextCreate(NULL, width, height, 8, width * 4,
                                      cs, kCGImageAlphaPremultipliedFirst | kCGBitmapByteOrder32Little);
+    fprintf(stderr,"[i2ME render] Bitmap context=%p\n",rc->ctx);
+    if(!rc->ctx){free(rc);return NULL;}
     CGContextTranslateCTM(rc->ctx, 0, height);
     CGContextScaleCTM(rc->ctx, 1.0, -1.0);
 
@@ -269,10 +273,13 @@ static RenderContext *createRenderContext(int width, int height) {
     rc->fontSize = 14.0;
     rc->fontStyle = 0;
     rc->font = CTFontCreateWithName(CFSTR("Helvetica"), rc->fontSize, NULL);
+    fprintf(stderr,"[i2ME render] Font ready\n");
     rc->ownsPixels = 1;
 
     track_rc(rc);
+    fprintf(stderr,"[i2ME render] Context tracked\n");
     native_heap_add(width * height * 4);
+    fprintf(stderr,"[i2ME render] Context ready\n");
     return rc;
 }
 

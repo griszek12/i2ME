@@ -7,6 +7,7 @@
 #import "LegacyStore.h"
 #import "LegacySettings.h"
 #include <pthread.h>
+#include <unistd.h>
 
 extern const char *j2me_ui_get_form_title(void);
 extern int j2me_ui_get_form_item_count(void);
@@ -46,12 +47,20 @@ static __weak GameController *activeGame;
 static pthread_mutex_t frameLock=PTHREAD_MUTEX_INITIALIZER;
 static CGImageRef nextFrame;
 static void flushFrame(void *frame,int width,int height) {
+    static unsigned long frames=0;
+    if(frames++==0) fprintf(stderr,"[i2ME] First rendered frame: %dx%d, image=%p\n",width,height,frame);
     pthread_mutex_lock(&frameLock);
     if(nextFrame) CGImageRelease(nextFrame);
     nextFrame=(CGImageRef)frame;
     pthread_mutex_unlock(&frameLock);
 }
 static void showUI(int action,const char *data) {
+    if(action==J2ME_UI_ACTION_SHOW_CANVAS){
+        fprintf(stderr,"[i2ME] Queueing Canvas UI\n");
+        dispatch_async(dispatch_get_main_queue(),^{ [activeGame showPayload:@{@"action":@(action)}]; });
+        fprintf(stderr,"[i2ME] Canvas UI queued\n");
+        return;
+    }
     NSMutableArray *items=[NSMutableArray array],*commands=[NSMutableArray array];
     if(action==J2ME_UI_ACTION_SHOW_LIST) {
         for(int i=0;i<j2me_ui_get_list_item_count();i++) [items addObject:text(j2me_ui_get_list_item(i))];
@@ -99,7 +108,9 @@ static void showUI(int action,const char *data) {
 }
 - (void)runMIDlet {
     @autoreleasepool {
+        fprintf(stderr,"[i2ME] MIDlet worker started\n");
         NSString *root=[[NSBundle mainBundle] resourcePath];NSString *save=SaveRoot(GameID(self.jar));NSDictionary *profile=GameProfile(self.jar);
+        fprintf(stderr,"[i2ME] Starting JVM for %s\n",[self.jar.lastPathComponent UTF8String]);
         int result=jvm_bridge_init([root fileSystemRepresentation],[save fileSystemRepresentation],[self.jar fileSystemRepresentation],[[profile objectForKey:@"width"] intValue],[[profile objectForKey:@"height"] intValue],1,[[profile objectForKey:@"fps"] intValue]);
         if(!result) result=jvm_bridge_run_midlet([self.jar fileSystemRepresentation]);
         jvm_bridge_destroy();
@@ -196,4 +207,11 @@ static void showUI(int action,const char *data) {
     NSError *error=nil;BOOL copied=[[NSFileManager defaultManager] copyItemAtPath:url.path toPath:dest error:&error];[self.library refresh];return copied;
 }
 @end
-int main(int argc,char **argv){setvbuf(stdout,NULL,_IONBF,0);setvbuf(stderr,NULL,_IONBF,0);@autoreleasepool{return UIApplicationMain(argc,argv,nil,@"AppDelegate");}}
+int main(int argc,char **argv){@autoreleasepool{
+    NSString *path=[documents() stringByAppendingPathComponent:@"i2me.log"];
+    freopen([path fileSystemRepresentation],"w",stdout);
+    dup2(fileno(stdout),fileno(stderr));
+    setvbuf(stdout,NULL,_IONBF,0);setvbuf(stderr,NULL,_IONBF,0);
+    fprintf(stderr,"[i2ME diagnostic] iOS %s, model %s, pointer bits %lu\n",[[UIDevice currentDevice].systemVersion UTF8String],[[UIDevice currentDevice].model UTF8String],(unsigned long)(sizeof(void*)*8));
+    return UIApplicationMain(argc,argv,nil,@"AppDelegate");
+}}
