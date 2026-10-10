@@ -1,0 +1,617 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>de</key>
+	<dict>
+		<key>addJar</key>
+		<string>JAR hinzufügen</string>
+		<key>cancel</key>
+		<string>Abbrechen</string>
+		<key>custom</key>
+		<string>Benutzerdefiniert</string>
+		<key>delete</key>
+		<string>Löschen</string>
+		<key>deleteGame</key>
+		<string>Spiel löschen?</string>
+		<key>edit</key>
+		<string>Bearbeiten</string>
+		<key>error</key>
+		<string>Fehler</string>
+		<key>firstLaunch</key>
+		<string>Erster Start: Spiel konfigurieren</string>
+		<key>fps</key>
+		<string>FPS-Limit</string>
+		<key>gameSettings</key>
+		<string>Spieleinstellungen</string>
+		<key>icon</key>
+		<string>Symbol</string>
+		<key>language</key>
+		<string>Sprache</string>
+		<key>left</key>
+		<string>Links</string>
+		<key>name</key>
+		<string>Name</string>
+		<key>ok</key>
+		<string>OK</string>
+		<key>resolution</key>
+		<string>Auflösung</string>
+		<key>restore</key>
+		<string>Wiederherstellen</string>
+		<key>right</key>
+		<string>Rechts</string>
+		<key>save</key>
+		<string>Speichern</string>
+		<key>saveBackups</key>
+		<string>Spielstandkopien</string>
+		<key>settings</key>
+		<string>Einstellungen</string>
+		<key>start</key>
+		<string>Start</string>
+		<key>stop</key>
+		<string>Stopp</string>
+		<key>stopping</key>
+		<string>Wird beendet…</string>
+		<key>unlimited</key>
+		<string>Unbegrenzt</string>
+	</dict>
+	<key>en</key>
+	<dict>
+		<key>addJar</key>
+		<string>Add a JAR</string>
+		<key>backupHint</key>
+		<string>Backups contain persistent game data (RMS). They do not capture a running Java VM. Stop the game before saving or restoring.</string>
+		<key>cancel</key>
+		<string>Cancel</string>
+		<key>custom</key>
+		<string>Custom</string>
+		<key>delete</key>
+		<string>Delete</string>
+		<key>deleteGame</key>
+		<string>Delete game?</string>
+		<key>deleteHint</key>
+		<string>Delete the imported JAR? Game save data and backups will be kept.</string>
+		<key>edit</key>
+		<string>Edit</string>
+		<key>error</key>
+		<string>Error</string>
+		<key>errorCode</key>
+		<string>Error code:</string>
+		<key>firstLaunch</key>
+		<string>First launch: configure this game</string>
+		<key>fps</key>
+		<string>FPS limit</string>
+		<key>gameSettings</key>
+		<string>Game settings</string>
+		<key>icon</key>
+		<string>Icon</string>
+		<key>importHint</key>
+		<string>Use iTunes file sharing or Open in…</string>
+		<key>language</key>
+		<string>Language</string>
+		<key>launchError</key>
+		<string>Could not start this JAR</string>
+		<key>left</key>
+		<string>Left</string>
+		<key>name</key>
+		<string>Name</string>
+		<key>ok</key>
+		<string>OK</string>
+		<key>resolution</key>
+		<string>Resolution</string>
+		<key>resolutionHint</key>
+		<string>Width and height: 64–1024 pixels.</string>
+		<key>restore</key>
+		<string>Restore</string>
+		<key>restoreHint</key>
+		<string>Replace the current game save data with this backup? A previous copy is retained.</string>
+		<key>right</key>
+		<string>Right</string>
+		<key>save</key>
+		<string>Save</string>
+		<key>saveBackups</key>
+		<string>Save backups</string>
+		<key>settings</key>
+		<string>Settings</string>
+		<key>start</key>
+		<string>Start</string>
+		<key>stop</key>
+		<string>Stop</string>
+		<key>stopping</key>
+		<string>Stopping…</string>
+		<key>unlimited</key>
+		<string>Unlimited</string>
+	</dict>
+	<key>es</key>
+	<dict>
+		<key>addJar</key>
+		<string>Añadir un JAR</string>
+		<key>cancel</key>
+		<string>Cancelar</string>
+		<key>custom</key>
+		<string>Personalizada</string>
+		<key>delete</key>
+		<string>Eliminar</string>
+		<key>deleteGame</key>
+		<string>¿Eliminar juego?</string>
+		<key>edit</key>
+		<string>Editar</string>
+		<key>error</key>
+		<string>Error</string>
+		<key>firstLaunch</key>
+		<string>Primer inicio: configura el juego</string>
+		<key>fps</key>
+		<string>Límite FPS</string>
+		<key>gameSettings</key>
+		<string>Ajustes del juego</string>
+		<key>icon</key>
+		<string>Icono</string>
+		<key>language</key>
+		<string>Idioma</string>
+		<key>left</key>
+		<string>Izquierda</string>
+		<key>name</key>
+		<string>Nombre</string>
+		<key>ok</key>
+		<string>Aceptar</string>
+		<key>resolution</key>
+		<string>Resolución</string>
+		<key>restore</key>
+		<string>Restaurar</string>
+		<key>right</key>
+		<string>Derecha</string>
+		<key>save</key>
+		<string>Guardar</string>
+		<key>saveBackups</key>
+		<string>Copias de partidas</string>
+		<key>settings</key>
+		<string>Ajustes</string>
+		<key>start</key>
+		<string>Iniciar</string>
+		<key>stop</key>
+		<string>Detener</string>
+		<key>stopping</key>
+		<string>Deteniendo…</string>
+		<key>unlimited</key>
+		<string>Sin límite</string>
+	</dict>
+	<key>fr</key>
+	<dict>
+		<key>addJar</key>
+		<string>Ajouter un JAR</string>
+		<key>cancel</key>
+		<string>Annuler</string>
+		<key>custom</key>
+		<string>Personnalisée</string>
+		<key>delete</key>
+		<string>Supprimer</string>
+		<key>deleteGame</key>
+		<string>Supprimer le jeu ?</string>
+		<key>edit</key>
+		<string>Modifier</string>
+		<key>error</key>
+		<string>Erreur</string>
+		<key>firstLaunch</key>
+		<string>Premier lancement : configurer le jeu</string>
+		<key>fps</key>
+		<string>Limite FPS</string>
+		<key>gameSettings</key>
+		<string>Paramètres du jeu</string>
+		<key>icon</key>
+		<string>Icône</string>
+		<key>language</key>
+		<string>Langue</string>
+		<key>left</key>
+		<string>Gauche</string>
+		<key>name</key>
+		<string>Nom</string>
+		<key>ok</key>
+		<string>OK</string>
+		<key>resolution</key>
+		<string>Résolution</string>
+		<key>restore</key>
+		<string>Restaurer</string>
+		<key>right</key>
+		<string>Droite</string>
+		<key>save</key>
+		<string>Enregistrer</string>
+		<key>saveBackups</key>
+		<string>Copies des sauvegardes</string>
+		<key>settings</key>
+		<string>Paramètres</string>
+		<key>start</key>
+		<string>Démarrer</string>
+		<key>stop</key>
+		<string>Arrêter</string>
+		<key>stopping</key>
+		<string>Arrêt…</string>
+		<key>unlimited</key>
+		<string>Illimité</string>
+	</dict>
+	<key>it</key>
+	<dict>
+		<key>addJar</key>
+		<string>Aggiungi JAR</string>
+		<key>cancel</key>
+		<string>Annulla</string>
+		<key>custom</key>
+		<string>Personalizzata</string>
+		<key>delete</key>
+		<string>Elimina</string>
+		<key>deleteGame</key>
+		<string>Eliminare il gioco?</string>
+		<key>edit</key>
+		<string>Modifica</string>
+		<key>error</key>
+		<string>Errore</string>
+		<key>firstLaunch</key>
+		<string>Primo avvio: configura il gioco</string>
+		<key>fps</key>
+		<string>Limite FPS</string>
+		<key>gameSettings</key>
+		<string>Impostazioni gioco</string>
+		<key>icon</key>
+		<string>Icona</string>
+		<key>language</key>
+		<string>Lingua</string>
+		<key>left</key>
+		<string>Sinistra</string>
+		<key>name</key>
+		<string>Nome</string>
+		<key>ok</key>
+		<string>OK</string>
+		<key>resolution</key>
+		<string>Risoluzione</string>
+		<key>restore</key>
+		<string>Ripristina</string>
+		<key>right</key>
+		<string>Destra</string>
+		<key>save</key>
+		<string>Salva</string>
+		<key>saveBackups</key>
+		<string>Copie dei salvataggi</string>
+		<key>settings</key>
+		<string>Impostazioni</string>
+		<key>start</key>
+		<string>Avvia</string>
+		<key>stop</key>
+		<string>Ferma</string>
+		<key>stopping</key>
+		<string>Arresto…</string>
+		<key>unlimited</key>
+		<string>Illimitato</string>
+	</dict>
+	<key>ja</key>
+	<dict>
+		<key>addJar</key>
+		<string>JARを追加</string>
+		<key>cancel</key>
+		<string>キャンセル</string>
+		<key>custom</key>
+		<string>カスタム</string>
+		<key>delete</key>
+		<string>削除</string>
+		<key>deleteGame</key>
+		<string>ゲームを削除しますか？</string>
+		<key>edit</key>
+		<string>編集</string>
+		<key>error</key>
+		<string>エラー</string>
+		<key>firstLaunch</key>
+		<string>初回起動：ゲームを設定</string>
+		<key>fps</key>
+		<string>FPS上限</string>
+		<key>gameSettings</key>
+		<string>ゲーム設定</string>
+		<key>icon</key>
+		<string>アイコン</string>
+		<key>language</key>
+		<string>言語</string>
+		<key>left</key>
+		<string>左</string>
+		<key>name</key>
+		<string>名前</string>
+		<key>ok</key>
+		<string>OK</string>
+		<key>resolution</key>
+		<string>解像度</string>
+		<key>restore</key>
+		<string>復元</string>
+		<key>right</key>
+		<string>右</string>
+		<key>save</key>
+		<string>保存</string>
+		<key>saveBackups</key>
+		<string>セーブのバックアップ</string>
+		<key>settings</key>
+		<string>設定</string>
+		<key>start</key>
+		<string>開始</string>
+		<key>stop</key>
+		<string>停止</string>
+		<key>stopping</key>
+		<string>停止中…</string>
+		<key>unlimited</key>
+		<string>無制限</string>
+	</dict>
+	<key>pl</key>
+	<dict>
+		<key>addJar</key>
+		<string>Dodaj plik JAR</string>
+		<key>backupHint</key>
+		<string>Kopie zawierają trwałe zapisy gry (RMS). Nie obejmują stanu działającej maszyny Java. Zatrzymaj grę przed utworzeniem lub przywróceniem kopii.</string>
+		<key>cancel</key>
+		<string>Anuluj</string>
+		<key>custom</key>
+		<string>Własna</string>
+		<key>delete</key>
+		<string>Usuń</string>
+		<key>deleteGame</key>
+		<string>Usunąć grę?</string>
+		<key>deleteHint</key>
+		<string>Usunąć zaimportowany JAR? Zapisy gry i ich kopie pozostaną.</string>
+		<key>edit</key>
+		<string>Edytuj</string>
+		<key>error</key>
+		<string>Błąd</string>
+		<key>errorCode</key>
+		<string>Kod błędu:</string>
+		<key>firstLaunch</key>
+		<string>Pierwsze uruchomienie: ustaw tę grę</string>
+		<key>fps</key>
+		<string>Limit FPS</string>
+		<key>gameSettings</key>
+		<string>Ustawienia gry</string>
+		<key>icon</key>
+		<string>Ikona</string>
+		<key>importHint</key>
+		<string>Przez pliki iTunes lub Otwórz w…</string>
+		<key>language</key>
+		<string>Język</string>
+		<key>launchError</key>
+		<string>Nie udało się uruchomić JAR-a</string>
+		<key>left</key>
+		<string>Lewy</string>
+		<key>name</key>
+		<string>Nazwa</string>
+		<key>ok</key>
+		<string>OK</string>
+		<key>resolution</key>
+		<string>Rozdzielczość</string>
+		<key>resolutionHint</key>
+		<string>Szerokość i wysokość: 64–1024 piksele.</string>
+		<key>restore</key>
+		<string>Przywróć</string>
+		<key>restoreHint</key>
+		<string>Zastąpić bieżące zapisy gry tą kopią? Poprzednie dane zostaną zachowane.</string>
+		<key>right</key>
+		<string>Prawy</string>
+		<key>save</key>
+		<string>Zapisz</string>
+		<key>saveBackups</key>
+		<string>Kopie zapisów</string>
+		<key>settings</key>
+		<string>Ustawienia</string>
+		<key>start</key>
+		<string>Uruchom</string>
+		<key>stop</key>
+		<string>Stop</string>
+		<key>stopping</key>
+		<string>Zatrzymywanie…</string>
+		<key>unlimited</key>
+		<string>Bez limitu</string>
+	</dict>
+	<key>pt</key>
+	<dict>
+		<key>addJar</key>
+		<string>Adicionar JAR</string>
+		<key>cancel</key>
+		<string>Cancelar</string>
+		<key>custom</key>
+		<string>Personalizada</string>
+		<key>delete</key>
+		<string>Eliminar</string>
+		<key>deleteGame</key>
+		<string>Eliminar jogo?</string>
+		<key>edit</key>
+		<string>Editar</string>
+		<key>error</key>
+		<string>Erro</string>
+		<key>firstLaunch</key>
+		<string>Primeiro início: configurar o jogo</string>
+		<key>fps</key>
+		<string>Limite FPS</string>
+		<key>gameSettings</key>
+		<string>Definições do jogo</string>
+		<key>icon</key>
+		<string>Ícone</string>
+		<key>language</key>
+		<string>Idioma</string>
+		<key>left</key>
+		<string>Esquerda</string>
+		<key>name</key>
+		<string>Nome</string>
+		<key>ok</key>
+		<string>OK</string>
+		<key>resolution</key>
+		<string>Resolução</string>
+		<key>restore</key>
+		<string>Restaurar</string>
+		<key>right</key>
+		<string>Direita</string>
+		<key>save</key>
+		<string>Guardar</string>
+		<key>saveBackups</key>
+		<string>Cópias dos jogos</string>
+		<key>settings</key>
+		<string>Definições</string>
+		<key>start</key>
+		<string>Iniciar</string>
+		<key>stop</key>
+		<string>Parar</string>
+		<key>stopping</key>
+		<string>A parar…</string>
+		<key>unlimited</key>
+		<string>Sem limite</string>
+	</dict>
+	<key>ru</key>
+	<dict>
+		<key>addJar</key>
+		<string>Добавить JAR</string>
+		<key>cancel</key>
+		<string>Отмена</string>
+		<key>custom</key>
+		<string>Своя</string>
+		<key>delete</key>
+		<string>Удалить</string>
+		<key>deleteGame</key>
+		<string>Удалить игру?</string>
+		<key>edit</key>
+		<string>Изменить</string>
+		<key>error</key>
+		<string>Ошибка</string>
+		<key>firstLaunch</key>
+		<string>Первый запуск: настройте игру</string>
+		<key>fps</key>
+		<string>Ограничение FPS</string>
+		<key>gameSettings</key>
+		<string>Настройки игры</string>
+		<key>icon</key>
+		<string>Значок</string>
+		<key>language</key>
+		<string>Язык</string>
+		<key>left</key>
+		<string>Слева</string>
+		<key>name</key>
+		<string>Название</string>
+		<key>ok</key>
+		<string>ОК</string>
+		<key>resolution</key>
+		<string>Разрешение</string>
+		<key>restore</key>
+		<string>Восстановить</string>
+		<key>right</key>
+		<string>Справа</string>
+		<key>save</key>
+		<string>Сохранить</string>
+		<key>saveBackups</key>
+		<string>Копии сохранений</string>
+		<key>settings</key>
+		<string>Настройки</string>
+		<key>start</key>
+		<string>Запустить</string>
+		<key>stop</key>
+		<string>Стоп</string>
+		<key>stopping</key>
+		<string>Остановка…</string>
+		<key>unlimited</key>
+		<string>Без ограничения</string>
+	</dict>
+	<key>uk</key>
+	<dict>
+		<key>addJar</key>
+		<string>Додати JAR</string>
+		<key>cancel</key>
+		<string>Скасувати</string>
+		<key>custom</key>
+		<string>Власна</string>
+		<key>delete</key>
+		<string>Видалити</string>
+		<key>deleteGame</key>
+		<string>Видалити гру?</string>
+		<key>edit</key>
+		<string>Редагувати</string>
+		<key>error</key>
+		<string>Помилка</string>
+		<key>firstLaunch</key>
+		<string>Перший запуск: налаштуйте гру</string>
+		<key>fps</key>
+		<string>Обмеження FPS</string>
+		<key>gameSettings</key>
+		<string>Налаштування гри</string>
+		<key>icon</key>
+		<string>Значок</string>
+		<key>language</key>
+		<string>Мова</string>
+		<key>left</key>
+		<string>Ліворуч</string>
+		<key>name</key>
+		<string>Назва</string>
+		<key>ok</key>
+		<string>Гаразд</string>
+		<key>resolution</key>
+		<string>Роздільність</string>
+		<key>restore</key>
+		<string>Відновити</string>
+		<key>right</key>
+		<string>Праворуч</string>
+		<key>save</key>
+		<string>Зберегти</string>
+		<key>saveBackups</key>
+		<string>Копії збережень</string>
+		<key>settings</key>
+		<string>Налаштування</string>
+		<key>start</key>
+		<string>Запустити</string>
+		<key>stop</key>
+		<string>Стоп</string>
+		<key>stopping</key>
+		<string>Зупинка…</string>
+		<key>unlimited</key>
+		<string>Без обмеження</string>
+	</dict>
+	<key>zh</key>
+	<dict>
+		<key>addJar</key>
+		<string>添加 JAR</string>
+		<key>cancel</key>
+		<string>取消</string>
+		<key>custom</key>
+		<string>自定义</string>
+		<key>delete</key>
+		<string>删除</string>
+		<key>deleteGame</key>
+		<string>删除游戏？</string>
+		<key>edit</key>
+		<string>编辑</string>
+		<key>error</key>
+		<string>错误</string>
+		<key>firstLaunch</key>
+		<string>首次启动：配置游戏</string>
+		<key>fps</key>
+		<string>帧率上限</string>
+		<key>gameSettings</key>
+		<string>游戏设置</string>
+		<key>icon</key>
+		<string>图标</string>
+		<key>language</key>
+		<string>语言</string>
+		<key>left</key>
+		<string>左</string>
+		<key>name</key>
+		<string>名称</string>
+		<key>ok</key>
+		<string>确定</string>
+		<key>resolution</key>
+		<string>分辨率</string>
+		<key>restore</key>
+		<string>恢复</string>
+		<key>right</key>
+		<string>右</string>
+		<key>save</key>
+		<string>保存</string>
+		<key>saveBackups</key>
+		<string>存档备份</string>
+		<key>settings</key>
+		<string>设置</string>
+		<key>start</key>
+		<string>开始</string>
+		<key>stop</key>
+		<string>停止</string>
+		<key>stopping</key>
+		<string>正在停止…</string>
+		<key>unlimited</key>
+		<string>无限制</string>
+	</dict>
+</dict>
+</plist>

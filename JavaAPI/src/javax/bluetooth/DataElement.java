@@ -1,0 +1,155 @@
+package javax.bluetooth;
+
+import java.util.Arrays;
+import java.util.Vector;
+
+public class DataElement {
+	public static final int NULL = 0;
+	public static final int U_INT_1 = 0x8;
+	public static final int U_INT_2 = 0x9;
+	public static final int U_INT_4 = 0xA;
+	public static final int U_INT_8 = 0xB;
+	public static final int U_INT_16 = 0xC;
+	public static final int INT_1 = 0x10;
+	public static final int INT_2 = 0x11;
+	public static final int INT_4 = 0x12;
+	public static final int INT_8 = 0x13;
+	public static final int INT_16 = 0x14;
+	public static final int URL = 0x40;
+	public static final int UUID = 0x18;
+	public static final int BOOL = 0x28;
+	public static final int STRING = 0x20;
+	public static final int DATSEQ = 0x30;
+	public static final int DATALT = 0x38;
+
+	private Object value;
+	private int valueType;
+
+	public DataElement(int valueType) {
+		switch (valueType) {
+			case NULL:
+				value = null;
+				break;
+			case DATALT:
+			case DATSEQ:
+				value = new Vector();
+				break;
+			default:
+				throw new IllegalArgumentException();
+		}
+		this.valueType = valueType;
+	}
+
+	public DataElement(boolean bool) {
+		value = bool ? Boolean.TRUE : Boolean.FALSE;
+		valueType = BOOL;
+	}
+
+	public DataElement(int valueType, long value) {
+		switch (valueType) {
+			case U_INT_1:
+				if (value < 0 || value > 0xff) throw new IllegalArgumentException();
+				break;
+			case U_INT_2:
+				if (value < 0 || value > 0xffff) throw new IllegalArgumentException();
+				break;
+			case U_INT_4:
+				if (value < 0 || value > 0xffffffffL) throw new IllegalArgumentException();
+				break;
+			case INT_1:
+				if (value < -0x80 || value > 0x7f) throw new IllegalArgumentException();
+				break;
+			case INT_2:
+				if (value < -0x8000 || value > 0x7fff) throw new IllegalArgumentException();
+				break;
+			case INT_4:
+				if (value < -0x80000000 || value > 0x7fffffff) throw new IllegalArgumentException();
+				break;
+			case INT_8:
+				break;
+			default:
+				throw new IllegalArgumentException();
+		}
+		this.value = new Long(value);
+		this.valueType = valueType;
+	}
+
+	public DataElement(int valueType, Object value) {
+		if (value == null) throw new IllegalArgumentException();
+		switch (valueType) {
+			case URL:
+			case STRING:
+				if (!(value instanceof String)) throw new IllegalArgumentException();
+				break;
+			case UUID:
+				if (!(value instanceof javax.bluetooth.UUID)) throw new IllegalArgumentException();
+				break;
+			case U_INT_8:
+				if (!(value instanceof byte[]) || ((byte[]) value).length != 8) throw new IllegalArgumentException();
+				break;
+			case U_INT_16:
+			case INT_16:
+				if (!(value instanceof byte[]) || ((byte[]) value).length != 16) throw new IllegalArgumentException();
+				break;
+			default:
+				throw new IllegalArgumentException();
+		}
+		this.value = value;
+		this.valueType = valueType;
+	}
+
+	public void addElement(DataElement elem) {
+		if (elem == null) throw new NullPointerException();
+		if (valueType != DATALT && valueType != DATSEQ) throw new ClassCastException();
+		((Vector) value).addElement(elem);
+	}
+
+	public void insertElementAt(DataElement elem, int index) {
+		if (elem == null) throw new NullPointerException();
+		if (valueType != DATALT && valueType != DATSEQ) throw new ClassCastException();
+		((Vector) value).insertElementAt(elem, index);
+	}
+
+	public int getSize() {
+		if (valueType != DATALT && valueType != DATSEQ) throw new ClassCastException();
+		return ((Vector) value).size();
+	}
+
+	public boolean removeElement(DataElement elem) {
+		if (elem == null) throw new NullPointerException();
+		if (valueType != DATALT && valueType != DATSEQ) throw new ClassCastException();
+		return ((Vector) value).removeElement(elem);
+	}
+
+	public int getDataType() { return valueType; }
+
+	public long getLong() {
+		switch (valueType) {
+			case U_INT_1: case U_INT_2: case U_INT_4:
+			case INT_1: case INT_2: case INT_4: case INT_8:
+				return ((Long) value).longValue();
+			default:
+				throw new ClassCastException();
+		}
+	}
+
+	public boolean getBoolean() {
+		if (valueType == BOOL) return ((Boolean) value).booleanValue();
+		throw new ClassCastException();
+	}
+
+	public Object getValue() {
+		switch (valueType) {
+			case URL: case STRING:
+				return value;
+			case UUID:
+				return value;
+			case U_INT_8: case U_INT_16: case INT_16:
+				return Arrays.copyOf((byte[]) value, ((byte[]) value).length);
+			case DATSEQ: case DATALT:
+				return ((Vector) value).elements();
+			default:
+				throw new ClassCastException();
+		}
+	}
+}

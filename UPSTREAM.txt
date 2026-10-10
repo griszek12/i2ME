@@ -1,0 +1,2 @@
+Based on JarBox: https://github.com/ccbkv/J2MEEmulator-iOS
+Port for iOS 5/6 ARMv7. Upstream license retained.
