@@ -1,4 +1,4 @@
-# i2ME 1.0
+# i2ME
 
 A Java ME game emulator for older iOS devices. Made by Griszek (with help of ChatGPT 6.1).
 
