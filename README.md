@@ -1,55 +1,55 @@
 # i2ME 1.0
 
-Emulator gier Java ME dla starszych urządzeń iOS. Made by Griszek (with help of ChatGPT 6.1).
+A Java ME game emulator for older iOS devices. Made by Griszek (with help of ChatGPT 6.1).
 
-Port projektu [JarBox](https://github.com/ccbkv/J2MEEmulator-iOS), korzystający z miniJVM. To wczesna wersja: zgodność zależy od gry.
+Based on [JarBox](https://github.com/ccbkv/J2MEEmulator-iOS) and powered by miniJVM. This is an early release; compatibility varies between games.
 
-## Urządzenia i instalacja
+## Requirements and installation
 
-- Wersja urządzeniowa: ARMv7, minimum iOS 5.0, SDK 6.1. Główny cel: iPhone 4 z iOS 6.
-- IPA jest **niepodpisane**. Wymaga własnego podpisania i odpowiedniego profilu Apple albo urządzenia z jailbreakiem i obsługą instalowania niepodpisanych aplikacji. Sam jailbreak nie zawsze wystarcza.
-- Nie testowano jeszcze na fizycznym iPhonie. ARMv6 / iOS 3 nie są obsługiwane.
-- Testy wykonano w symulatorze iOS 6.1. Pakiet nie zawiera gier komercyjnych ani danych użytkownika.
+- **ARMv7**, minimum **iOS 5.0**, built with the iOS 6.1 SDK. Primary target: iPhone 4 running iOS 6.
+- The release IPA is **unsigned**. Installation requires your own signing certificate and provisioning profile, or a jailbroken device configured to install unsigned apps. Jailbreak alone may not be enough.
+- Not yet tested on a physical iPhone. ARMv6 and iOS 3 are not supported.
+- Testing was performed in the iOS 6.1 simulator. No commercial games or user data are included.
 
-## Używanie
+## Using i2ME
 
-1. Dodaj własny plik JAR do katalogu Documents aplikacji przez udostępnianie plików iTunes albo otwórz go w i2ME.
-2. Odśwież bibliotekę. Przy pierwszym uruchomieniu ustaw rozdzielczość i limit FPS.
-3. Przesuń wiersz gry w prawo, aby odsłonić niebieską opcję Edytuj, lub w lewo, aby odsłonić czerwone Usuń.
-4. W edycji możesz zmienić nazwę, ikonę, rozdzielczość i FPS.
-5. Ustawienia w lewym górnym rogu zawierają wybór 11 języków i informacje o aplikacji. Część opisów pomocniczych używa angielskiego tłumaczenia zastępczego.
+1. Copy your own JAR files into the app's Documents folder using iTunes File Sharing, or open a JAR with i2ME.
+2. Refresh the library. On a game's first launch, choose its screen resolution and FPS limit.
+3. Swipe a game row right to reveal the blue **Edit** button, or left to reveal the red **Delete** button.
+4. Edit the game's name, icon, resolution and FPS limit.
+5. Open **Settings** in the top-left corner to select one of 11 languages and view app information. Some help text falls back to English.
 
-## Zapisy
+## Save backups
 
-Kopie zapisów obejmują **dane RMS**, czyli trwałe zapisy gry. Nie są pełnym save state pamięci JVM i nie zapisują bieżącej klatki ani stosów wątków.
+Backups contain **RMS data**, the game's persistent saved data. Full JVM save states are not implemented: backups do not capture the current frame, JVM memory or thread stacks.
 
-Przycisk zapisów podczas gry zatrzymuje MIDlet i otwiera listę kopii. Samo otwarcie listy nie tworzy kopii. Przycisk **+** tworzy ją jawnie; wybór istniejącej kopii pozwala ją przywrócić, a przesunięcie wiersza pozwala ją usunąć. Gra może samodzielnie zapisywać swoje RMS przy zamykaniu.
+Opening backups during gameplay stops the MIDlet and displays the backup list. Opening the list does not create a backup. Tap **+** to create one, select a backup to restore it, or swipe its row to delete it. Games may save their own RMS data when they close.
 
-## Kompilacja
+## Building
 
-Sprawdzona konfiguracja: OS X 10.8.5, Xcode 4.6, SDK iOS 6.1. Skrypt zakłada instalację Xcode w `/Applications/Xcode.app`.
+Verified build environment: OS X 10.8.5, Xcode 4.6 and the iOS 6.1 SDK. The script expects Xcode at `/Applications/Xcode.app`.
 
 ```sh
 bash build.sh iphoneos armv7
 bash build.sh iphonesimulator i386
 ```
 
-Wynik: `build/armv7/LegacyJ2ME.app` albo `build/i386/LegacyJ2ME.app`. Plik wykonywalny i identyfikator pakietu zachowują wewnętrzne nazwy portu; wyświetlana nazwa to i2ME.
+Output: `build/armv7/LegacyJ2ME.app` or `build/i386/LegacyJ2ME.app`. The executable and bundle identifier retain the port's internal names; the displayed app name is i2ME.
 
-Do przygotowania IPA umieść wersję ARMv7 w katalogu `Payload`, zachowując rozszerzenie `.app`, i spakuj katalog Payload jako ZIP z rozszerzeniem `.ipa`. Podpisywanie jest osobnym krokiem.
+To create an IPA, place the ARMv7 app inside a `Payload` folder, keep the `.app` extension, and ZIP the Payload folder into a file with the `.ipa` extension. Signing is a separate step.
 
-Skrypt korzysta z dołączonych plików runtime JAR. Źródła warstwy Java ME znajdują się w `JavaAPI/src`; po ich zmianie trzeba osobno przebudować `Resources/j2me_api.jar`, używając JDK z obsługą `javac --release 8`. Po zmianach nagłówków C usuń własny katalog `build`, aby uniknąć ponownego użycia starszych obiektów.
+The build uses the included runtime JAR files. Java ME API sources are in `JavaAPI/src`. After changing them, rebuild `Resources/j2me_api.jar` separately using a JDK that supports `javac --release 8`. After changing C headers, remove your generated `build` directory before rebuilding to avoid reusing outdated object files.
 
-## Sprawdzone i ograniczenia
+## Testing and known limitations
 
-- Kompilacja ARMv7 i i386; nagłówek Mach-O deklaruje minimum iOS 5.0 i SDK 6.1.
-- Demo: renderowanie 2D, obsługa klawiszy i RMS w symulatorze.
-- Prywatny test Plants vs Zombies: gra przeszła uruchomienie po obejściu awarii AudioToolbox. Całej rozgrywki nie zweryfikowano.
-- W symulatorze MIDI jest wyciszone: stary AudioToolbox crashował przy braku urządzenia audio w VM. Wersja urządzeniowa zachowuje odtwarzanie MIDI, ale dźwięku na telefonie jeszcze nie sprawdzono.
-- Brak pełnych save states JVM. Zgodność 3D i wszystkich formularzy MIDP wymaga dalszych testów.
+- ARMv7 and i386 builds completed successfully. The device executable declares a minimum iOS version of 5.0 and SDK version 6.1.
+- Demo testing covered 2D rendering, keypad input and RMS in the simulator.
+- A private Plants vs Zombies test passed startup after working around an AudioToolbox crash. A full playthrough has not been verified.
+- MIDI is muted in the simulator because the legacy AudioToolbox crashed when the VM had no audio device. The device build retains MIDI playback, but audio has not yet been tested on a phone.
+- Full JVM save states are not available. 3D compatibility and complete MIDP form support need further testing.
 
-## Licencje i pochodzenie
+## Credits and licenses
 
-Zobacz [THIRD_PARTY.md](THIRD_PARTY.md), [LICENSE](LICENSE) i katalog `Licenses`. Zachowane są informacje o autorach w źródłach. Do publicznych wydań dołączaj również paczkę źródeł odpowiadającą wydaniu, w tym zmodyfikowane źródła M3G.
+See [THIRD_PARTY.md](THIRD_PARTY.md), [LICENSE](LICENSE) and the `Licenses` directory. Original author notices are preserved in the sources. Public releases should include the matching source package, including the modified M3G sources.
 
-Grafika aplikacji została wygenerowana z motywem filiżanki kojarzonym z Javą i napisem i2ME. Nie jest oficjalnym zasobem Java ani oznaczeniem współpracy z Oracle lub Apple.
+The app icon was generated using a Java-inspired coffee motif and the i2ME name. It is not an official Java asset. This project is not affiliated with Oracle or Apple.
